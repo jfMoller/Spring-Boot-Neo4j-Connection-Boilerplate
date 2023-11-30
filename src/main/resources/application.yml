@@ -1,0 +1,6 @@
+spring:
+  neo4j:
+    uri: <your_uri>
+    authentication:
+      username: neo4j
+      password: <your_password>

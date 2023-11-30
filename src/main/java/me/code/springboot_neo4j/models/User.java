@@ -5,10 +5,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
-import org.springframework.data.neo4j.core.schema.Relationship;
 import org.springframework.data.neo4j.core.support.UUIDStringGenerator;
-
-import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -20,8 +17,6 @@ public class User {
     private String username;
     private String email;
     private String password;
-    @Relationship("ORDERED")
-    List<Order> orders;
 
     public User(String username, String email, String password) {
         this.username = username;

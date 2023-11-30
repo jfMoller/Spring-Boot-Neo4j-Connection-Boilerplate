@@ -17,7 +17,7 @@ public class Order {
     @Id
     @GeneratedValue(UUIDStringGenerator.class)
     String id;
-    @Relationship("ORDERED_BY")
+    @Relationship("PLACED_BY")
     User user;
     @Relationship("ORDERED")
     List<Product> products;

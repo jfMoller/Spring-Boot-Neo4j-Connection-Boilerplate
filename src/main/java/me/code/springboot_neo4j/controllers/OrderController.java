@@ -4,9 +4,10 @@ import me.code.springboot_neo4j.models.Order;
 import me.code.springboot_neo4j.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/order")
@@ -18,20 +19,12 @@ public class OrderController {
         this.orderService = orderService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<Order>> getAllOrders() {
-        var result = orderService.getAllOrders();
-        return ResponseEntity.ok(result);
+    record PlaceOrderDto(String userId, String[] productIds) {
     }
 
-    @PostMapping
-    public ResponseEntity<Order> addOrder(@RequestBody Order newOrder) {
-        var result = orderService.addOrder(newOrder);
+    @PostMapping("/place")
+    public ResponseEntity<Order> placeOrder(@RequestBody PlaceOrderDto dto) {
+        var result = orderService.placeOrder(dto.userId(), dto.productIds());
         return ResponseEntity.ok(result);
-    }
-
-    @DeleteMapping("/delete/{orderId}")
-    public void deleteOrder(@PathVariable String orderId) {
-        orderService.deleteOrder(orderId);
     }
 }
