@@ -2,7 +2,7 @@
 
 ### Introduction
 
-I wanted to put together some simple boilerplate for setting up a connection between Java Springboot and the Neo4j
+I wanted to put together some simple boilerplate for setting up a connection between Java Spring Boot and the Neo4j
 graph database.
 
 ### Description
